@@ -272,11 +272,6 @@ class CloseTicketView(ui.View):
     @ui.button(label="Fermer le ticket", style=discord.ButtonStyle.red, custom_id="close_ticket")
     async def close_ticket(self, interaction: discord.Interaction, button: ui.Button):
         """Fermeture du ticket avec modal de notation"""
-        # Vérifier si l'utilisateur est bien celui qui a créé le ticket ou un administrateur
-        ticket_creator = interaction.channel.name.split('-')[1].capitalize()
-        if interaction.user.name != ticket_creator and not interaction.user.guild_permissions.administrator:
-            await interaction.response.send_message("Seul le créateur du ticket ou un administrateur peut le fermer.", ephemeral=True)
-            return
         
         # Ouvrir le modal pour l'évaluation du support
         modal = RatingModal()
