@@ -79,7 +79,7 @@ async def create_status_embed(status):
             )
     else:
         embed = discord.Embed(
-            title="État du serveur Minecraft",
+            title="<:logo:1347624430603341834> État du serveur Minecraft",
             color=discord.Color.red(),
             timestamp=datetime.now()
         )
