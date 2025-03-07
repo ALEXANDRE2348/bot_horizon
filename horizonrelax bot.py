@@ -13,7 +13,7 @@ load_dotenv()
 MINECRAFT_SERVER = "54.37.80.17:25566"  # IP réelle pour la connexion
 DISPLAY_SERVER = "play.horizon-relax.org"  # IP affichée dans Discord
 DISCORD_CHANNEL_ID = "1330452744946843670"  # Remplacez par l'ID de votre salon
-TOKEN = "MTM0NTcwNDk5ODEyNTk2MTMwOQ.G2uloy.cT5laBovHq39At6jOKVOm8LYG1W7HJUqG09o2s"  # Remplacez par votre token Discord
+TOKEN = "MTM0NTcwNDk5ODEyNTk2MTMwOQ.Gj3GSg.LTvU2qa_lNYudv3RZDEtivvy0aThhFmrXMmMkI"  # Remplacez par votre token Discord
 
 # Créer le bot
 intents = discord.Intents.default()
@@ -114,6 +114,7 @@ async def update_status():
 @bot.event
 async def on_ready():
     print(f'{bot.user} est connecté !')
+    await bot.change_presence(activity=discord.Game(name="!help pour les commandes"))
 
     channel = bot.get_channel(int(DISCORD_CHANNEL_ID))
     if channel:
