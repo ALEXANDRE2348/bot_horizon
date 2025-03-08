@@ -1,19 +1,26 @@
 import discord
 from discord.ext import commands, tasks
 from mcstatus import JavaServer
-import asyncio
 from datetime import datetime
-import os
 from dotenv import load_dotenv
+
+import json
+
+RESSOURCE_PATH = "./ressource/"
 
 # Charger les variables d'environnement
 load_dotenv()
 
-# Configuration
-MINECRAFT_SERVER = "54.37.80.17:25566"  # IP réelle pour la connexion
-DISPLAY_SERVER = "play.horizon-relax.org"  # IP affichée dans Discord
-DISCORD_CHANNEL_ID = "1330452744946843670"  # Remplacez par l'ID de votre salon
-TOKEN = "MTM0NTcwNDk5ODEyNTk2MTMwOQ.G2uloy.cT5laBovHq39At6jOKVOm8LYG1W7HJUqG09o2s"  # Remplacez par votre token Discord
+# Charger les fichiers json
+with open( "{}config.json".format(RESSOURCE_PATH), "r") as configFile :
+    configData = json.load(configFile)
+
+# Les configs
+MINECRAFT_SERVER = configData["MINECRAFT_SERVER"]
+DISPLAY_SERVER = configData["DISPLAY_SERVER"]
+DISCORD_CHANNEL_ID = configData["DISCORD_CHANNEL_ID"]
+TOKEN = configData["TOKEN"]
+
 
 # Créer le bot
 intents = discord.Intents.default()
