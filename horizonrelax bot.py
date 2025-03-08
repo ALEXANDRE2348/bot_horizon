@@ -121,6 +121,7 @@ async def update_status():
 @bot.event
 async def on_ready():
     print(f'{bot.user} est connecté !')
+    await bot.change_presence(activity=discord.Game(name="!help pour les commandes"))
 
     channel = bot.get_channel(int(DISCORD_CHANNEL_ID))
     if channel:
