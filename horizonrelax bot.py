@@ -15,11 +15,15 @@ load_dotenv()
 with open( "{}config.json".format(RESSOURCE_PATH), "r") as configFile :
     configData = json.load(configFile)
 
+with open( "{}emoji.json".format(RESSOURCE_PATH), "r") as emojiFile :
+    emojiData = json.load(emojiFile)
+
 # Les configs
 MINECRAFT_SERVER = configData["MINECRAFT_SERVER"]
 DISPLAY_SERVER = configData["DISPLAY_SERVER"]
 DISCORD_CHANNEL_ID = configData["DISCORD_CHANNEL_ID"]
 TOKEN = configData["TOKEN"]
+EMOJI_LOGO = emojiData["logo"]
 
 
 # Créer le bot
@@ -56,7 +60,7 @@ async def check_minecraft_server():
 async def create_status_embed(status):
     if status['online']:
         embed = discord.Embed(
-            title="<:logo:1347624430603341834> État du serveur Minecraft",
+            title="{} État du serveur Minecraft".format(EMOJI_LOGO),
             color=discord.Color.green(),
             timestamp=datetime.now()
         )
@@ -86,7 +90,7 @@ async def create_status_embed(status):
             )
     else:
         embed = discord.Embed(
-            title="<:logo:1347624430603341834> État du serveur Minecraft",
+            title="{} État du serveur Minecraft".format(EMOJI_LOGO),
             color=discord.Color.red(),
             timestamp=datetime.now()
         )
